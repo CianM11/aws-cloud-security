@@ -1,4 +1,4 @@
-# Lab 5 – CloudTrail Forensics: Investigating High-Risk IAM Activity
+# Lab 4 – CloudTrail Forensics: Investigating High-Risk IAM Activity
 
 ## Overview
 
