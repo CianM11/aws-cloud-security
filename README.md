@@ -1,4 +1,4 @@
-# AWS Cloud Security Labs
+# AWS Cloud Security 
 
 Hands-on labs documenting my progress building cloud security fundamentals in AWS.
 Focus areas include IAM least privilege, secure networking, private access patterns,
