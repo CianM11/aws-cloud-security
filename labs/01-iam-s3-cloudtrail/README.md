@@ -1,129 +1,125 @@
-AWS Cloud Security Lab – IAM, Secure Storage & Audit Logging
-Overview
+# Lab 1 – AWS Cloud Security Foundations: IAM, Secure Storage & Audit Logging
 
-This lab focused on building and securing a basic AWS cloud environment while applying core cloud security principles. The objective was to understand how identity, access control, and audit logging work together in a real-world cloud setting, and how common misconfigurations can be detected and remediated.
+## Overview
 
-The lab was designed and executed using AWS Free Tier services.
+This lab focused on building and securing a **foundational AWS cloud environment** while applying core cloud security principles around **identity management, secure resource access, and audit logging**. The objective was to understand how IAM, storage permissions, and logging work together in a real-world AWS environment, and how misconfigurations can be detected and remediated.
 
-Objectives
+The lab was designed and executed using **AWS Free Tier services**, with an emphasis on secure defaults and cost-aware implementation.
 
-Deploy a basic AWS environment using best-practice defaults
+---
 
-Apply least-privilege access using IAM roles instead of static credentials
+## Objectives
 
-Secure cloud storage access
+* Deploy a basic AWS environment using security best practices
+* Enforce **least-privilege access** using IAM roles instead of static credentials
+* Secure access to cloud storage resources
+* Enable and analyse **AWS CloudTrail** logs for audit visibility
+* Simulate and remediate an IAM misconfiguration
 
-Enable and analyse CloudTrail logs for audit visibility
+---
 
-Simulate and remediate an IAM misconfiguration
+## Architecture Overview
 
-Architecture
+The lab environment consisted of the following components:
 
-The lab environment consisted of:
+* A custom **Amazon VPC** with a single subnet
+* An **EC2 instance** running Amazon Linux
+* An **IAM role** attached directly to the EC2 instance
+* An **Amazon S3 bucket** used to test controlled access
+* **AWS CloudTrail** enabled for management event logging
 
-A custom VPC with a single subnet
+The EC2 instance accessed AWS services exclusively via an IAM role, eliminating the use of long-lived access keys and reducing the risk of credential exposure.
 
-An EC2 instance running Amazon Linux
+---
 
-An IAM role attached to the instance
+## Key Implementation Steps
 
-An S3 bucket used to test controlled access
+### Identity & Access Management
 
-AWS CloudTrail enabled for management event logging
+* Created an IAM role with **scoped permissions** for EC2
+* Attached the role directly to the EC2 instance
+* Verified access to S3 using **role-based credentials**
+* Confirmed that no access keys were stored on the instance
 
-The EC2 instance accessed AWS services using an IAM role, avoiding the use of access keys entirely.
+This reinforced the importance of avoiding static credentials and relying on AWS-managed identity wherever possible.
 
-Key Implementation Steps
-1. Identity & Access Management
+---
 
-Created an IAM role for EC2 with scoped permissions
+### Secure Storage Access
 
-Attached the role directly to the instance
+* Created an S3 bucket with restricted access controls
+* Granted the EC2 IAM role permission to list and read objects
+* Validated that access was denied when permissions were removed
 
-Verified access to S3 using role-based credentials
+This demonstrated how IAM policies directly control access to cloud resources and how overly permissive policies can increase risk.
 
-Confirmed no access keys were stored on the instance
+---
 
-This reinforced the importance of avoiding long-lived credentials and relying on AWS-managed identity.
+### Audit Logging with CloudTrail
 
-2. Secure Storage Access
+* Enabled AWS CloudTrail for account-level management events
+* Observed management activity including:
 
-Created an S3 bucket with restricted access
+  * EC2 instance operations
+  * IAM role usage
+  * S3 access attempts
+* Analysed event details such as:
 
-Granted the EC2 IAM role permission to list and read objects
+  * Event source
+  * Identity context
+  * Timestamps and request metadata
 
-Validated that access was denied when permissions were removed
+CloudTrail provided full visibility into **who performed an action, what action was taken, and when it occurred**, supporting investigation and accountability.
 
-This demonstrated how IAM policies directly control access to cloud resources.
+---
 
-3. Audit Logging with CloudTrail
+### Misconfiguration Simulation & Remediation
 
-Enabled AWS CloudTrail for the account
+* Intentionally applied an **overly permissive IAM policy**
+* Verified that excessive permissions were granted
+* Detected the change using CloudTrail event history
+* Remediated the issue by restoring **least-privilege access**
 
-Observed management events such as:
+This step highlighted how easily IAM misconfigurations can introduce security risk and why logging is critical for detection and response.
 
-EC2 instance actions
+---
 
-IAM role usage
+## Security Concepts Demonstrated
 
-S3 access attempts
+* Least-privilege access control
+* Role-based authentication
+* Secure cloud storage permissions
+* Auditability and accountability
+* Misconfiguration detection and remediation
 
-Analysed event details including:
+---
 
-Event source
+## Key Takeaways
 
-Identity context
+* IAM roles are significantly more secure than access keys
+* CloudTrail is essential for audit visibility and security investigations
+* IAM misconfigurations are a common source of cloud security risk
+* Secure defaults combined with logging reduce the attack surface
 
-Timestamp and request metadata
+---
 
-CloudTrail provided full visibility into who did what, and when.
+## Cleanup
 
-4. Misconfiguration Simulation & Remediation
+All AWS resources were terminated after completion of the lab to avoid ongoing costs and unnecessary exposure.
 
-Intentionally applied an overly permissive IAM policy
+---
 
-Verified that excessive permissions were granted
+## Tools & Services Used
 
-Detected the change using CloudTrail logs
+* Amazon EC2
+* AWS Identity and Access Management (IAM)
+* Amazon S3
+* AWS CloudTrail
+* Amazon Linux
 
-Remediated the issue by tightening permissions to least privilege
+---
 
-This step highlighted how easy it is to introduce risk through IAM misconfiguration, and how logging is critical for detection.
+## Notes
 
-Security Concepts Demonstrated
+Sensitive identifiers and account-specific details were redacted from screenshots and documentation to maintain security best practices.
 
-Least-privilege access
-
-Role-based authentication
-
-Secure cloud storage permissions
-
-Auditability and accountability
-
-Misconfiguration detection and response
-
-Key Takeaways
-
-IAM roles are significantly more secure than access keys
-
-CloudTrail is essential for visibility and investigation
-
-Misconfigurations are a common source of cloud risk
-
-Secure defaults and monitoring reduce attack surface
-
-Cleanup
-
-All resources were terminated after completion to avoid ongoing costs.
-
-Tools & Services Used
-
-AWS EC2
-
-AWS IAM
-
-AWS S3
-
-AWS CloudTrail
-
-Amazon Linux
