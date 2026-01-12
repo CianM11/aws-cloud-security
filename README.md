@@ -1,6 +1,6 @@
 # AWS Cloud Security 
 
-Hands-on labs documenting my progress building cloud security fundamentals in AWS.
+Hands-on project documenting my progress building cloud security fundamentals in AWS.
 Focus areas include IAM least privilege, secure networking, private access patterns,
 and audit logging.
 
