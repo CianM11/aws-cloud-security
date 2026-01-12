@@ -123,3 +123,13 @@ All AWS resources were terminated after completion of the lab to avoid ongoing c
 
 Sensitive identifiers and account-specific details were redacted from screenshots and documentation to maintain security best practices.
 
+---
+
+## Screenshots
+
+Screenshots captured for this lab include:
+
+* Showing Details of StopInstances Event
+![IAM Event Timeline](screenshots/cloudtrail-event-lab1.png)
+
+
