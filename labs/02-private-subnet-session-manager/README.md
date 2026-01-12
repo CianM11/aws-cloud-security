@@ -127,12 +127,11 @@ All resources were terminated and deleted after completion to prevent ongoing co
 ---
 
 ## Screenshots
-> Identifiers have been redacted for security.
 
+Screenshots captured for this lab include:
+
+* EC2 Instance Details
 ![Private EC2 Instance](screenshots/ec2-private-no-public-ip.png)
+
+* Session Manager
 ![Session Manager Access](screenshots/session-manager-redacted.png)
-
----
-
-## Next Steps
-This lab prepares the foundation for cloud threat detection and response, which is explored in the next lab using **AWS GuardDuty**.
